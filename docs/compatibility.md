@@ -6,12 +6,10 @@ conclude. Project overview remains in the [README](../README.md).
 ## Independence and references
 
 This project is independent of Frigate and is not part of the Frigate
-repository. It does not redistribute Frigate source.
-
-Compatibility behavior is referenced against Frigate at:
-
-- repository: [blakeblackshear/frigate](https://github.com/blakeblackshear/frigate)
-- commit: [`77a66e75c61862b048a07c1295877f4b31343504`](https://github.com/blakeblackshear/frigate/commit/77a66e75c61862b048a07c1295877f4b31343504)
+repository. It does not redistribute Frigate source. The compatibility rules in
+this release were derived from Frigate's RKNN / `yolo-generic` behavior as of
+September 2026. That contract reflects a specific point in Frigate development
+and may need updating as Frigate changes.
 
 The summaries below are independent descriptions of this checker's implemented
 scope. They are not copied Frigate source text or tables.

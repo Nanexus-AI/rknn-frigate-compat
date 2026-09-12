@@ -15,9 +15,10 @@ handler. This project turns that gap into a conservative, local structural
 check.
 
 This project is independent of Frigate and is not part of the Frigate
-repository. It does not redistribute Frigate source. Compatibility behavior is
-referenced against Frigate at commit
-[`77a66e75c61862b048a07c1295877f4b31343504`](https://github.com/blakeblackshear/frigate/commit/77a66e75c61862b048a07c1295877f4b31343504).
+repository. It does not redistribute Frigate source. The compatibility rules in
+this release were derived from Frigate's RKNN / `yolo-generic` behavior as of
+September 2026. Future Frigate changes may require corresponding contract
+updates.
 
 ## What it checks
 
