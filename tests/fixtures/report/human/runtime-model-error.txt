@@ -1,0 +1,30 @@
+Selection / Environment
+Detector
+  selected: rknn
+Handler
+  selected: yolo-generic
+Model
+  configured path: models/configured.rknn
+  inspected path: /models/inspected.rknn
+RKNN Runtime
+  selection mode: default
+  loaded library path: /lib/librknnrt.so
+  loaded library sha256: cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+  API version: unavailable
+  driver version: unavailable
+  inherited loader environment: False
+  status: FAIL
+  FAIL operation.failure: probe rknn_init: SYNTHETIC: synthetic failure
+
+RKNN Model Metadata
+  unavailable
+
+Frigate Structural Contract
+  status: NOT_EVALUATED
+
+Semantic / Unproven Properties
+  status: NOT_EVALUATED
+
+Overall
+  RUNTIME_MODEL_ERROR (exit 2)
+  Structural and semantic compatibility were not proven because Runtime or model inspection failed.

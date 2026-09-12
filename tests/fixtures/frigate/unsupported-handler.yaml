@@ -1,0 +1,4 @@
+# Synthetic test-only fixture.
+detectors:
+  rknn: {type: rknn}
+model: {path: models/test.rknn, model_type: yolox}

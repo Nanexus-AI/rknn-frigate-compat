@@ -1,0 +1,14 @@
+# Synthetic test-only fixture; not evidence of production compatibility.
+detectors:
+  rknn:
+    type: rknn
+model:
+  path: models/test.rknn
+  model_type: yolo-generic
+  width: 640
+  height: 640
+  input_tensor: nhwc
+  input_pixel_format: rgb
+  input_dtype: int
+cameras:
+  ignored: {enabled: false}

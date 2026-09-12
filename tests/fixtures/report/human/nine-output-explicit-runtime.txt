@@ -1,0 +1,134 @@
+Selection / Environment
+Detector
+  selected: rknn
+Handler
+  selected: yolo-generic
+  evaluated contract: yolo-generic:multipart
+Model
+  configured path: models/nine-output.rknn
+  inspected path: /models/nine-output.rknn
+RKNN Runtime
+  selection mode: explicit
+  requested directory: /opt/runtime
+  expected loader target: /opt/runtime/librknnrt.so
+  expected loader sha256: bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+  loaded library path: /opt/runtime/librknnrt.so
+  loaded library sha256: bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+  identity verification: PASS
+  API version: 2.3.2
+  driver version: 0.9.8
+  inherited loader environment: False
+  status: PASS
+
+RKNN Model Metadata
+Inputs: 1
+Input 0
+  shape: [1, 640, 640, 3]
+  layout: NHWC
+  dtype: INT8
+  quantization: AFFINE
+Outputs: 9
+Output 0
+  shape: [1, 64, 80, 80]
+  layout: NCHW
+  dtype: INT8
+  quantization: AFFINE
+Output 1
+  shape: [1, 64, 80, 80]
+  layout: NCHW
+  dtype: INT8
+  quantization: AFFINE
+Output 2
+  shape: [1, 64, 80, 80]
+  layout: NCHW
+  dtype: INT8
+  quantization: AFFINE
+Output 3
+  shape: [1, 64, 40, 40]
+  layout: NCHW
+  dtype: INT8
+  quantization: AFFINE
+Output 4
+  shape: [1, 64, 40, 40]
+  layout: NCHW
+  dtype: INT8
+  quantization: AFFINE
+Output 5
+  shape: [1, 64, 40, 40]
+  layout: NCHW
+  dtype: INT8
+  quantization: AFFINE
+Output 6
+  shape: [1, 64, 20, 20]
+  layout: NCHW
+  dtype: INT8
+  quantization: AFFINE
+Output 7
+  shape: [1, 64, 20, 20]
+  layout: NCHW
+  dtype: INT8
+  quantization: AFFINE
+Output 8
+  shape: [1, 64, 20, 20]
+  layout: NCHW
+  dtype: INT8
+  quantization: AFFINE
+
+Frigate Structural Contract
+  status: FAIL
+  Input count
+    Frigate expects
+      count: 1
+    RKNN model reports
+      count: 1
+    Result
+      PASS
+      RKNN detection path supplies exactly one input
+  Output index range
+    Frigate expects
+      supported indices: indices 0..2
+    RKNN model reports
+      output indices: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+      output count: 9
+    Result
+      FAIL
+      Multipart output indices must fit the handler maps
+  Output 0 reshape
+    Frigate expects
+      required elements: 1632000
+    RKNN model reports
+      shape: [1, 64, 80, 80]
+      layout: NCHW
+      actual elements: 409600
+    Result
+      FAIL
+      Output must satisfy the handler reshape element equation
+  Output 8 reshape
+    Frigate expects
+      required elements: 102000
+    RKNN model reports
+      shape: [1, 64, 20, 20]
+      layout: NCHW
+      actual elements: 25600
+    Result
+      FAIL
+      Output must satisfy the handler reshape element equation
+
+Semantic / Unproven Properties
+  status: UNKNOWN
+  Color channel meaning
+    Result
+      UNKNOWN
+      RGB/BGR semantic channel meaning is not exposed by structural metadata
+  DFL representation
+    Result
+      UNKNOWN
+      DFL representation is not exposed by structural metadata
+  RKNN Lite dequantization behavior
+    Result
+      UNKNOWN
+      RKNN Lite numerical/dequantization behavior is not exposed by structural metadata
+
+Overall
+  STRUCTURALLY_INCOMPATIBLE (exit 1)
+  A mechanically proven structural mismatch was found against the selected supported contract.

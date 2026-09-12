@@ -1,0 +1,37 @@
+# Synthetic, representative, test-only Frigate RKNN configuration fixture.
+# This is not a production deployment and contains no private deployment data.
+# The yolo-generic handler is an asserted contract for later validation; this
+# fixture is not evidence that the referenced YOLOv8 model is Frigate-compatible.
+
+mqtt:
+  enabled: false
+
+detectors:
+  rknn:
+    type: rknn
+    num_cores: 3
+
+model:
+  # Normalized Frigate-side deployment path used by Host fixtures.
+  # The separately inspected .rknn artifact path is supplied via --model.
+  path: /models/c32_yolov8m_v2.0_0715_int8_300.rknn
+  model_type: yolo-generic
+  width: 640
+  height: 640
+  input_tensor: nhwc
+  input_pixel_format: rgb
+  input_dtype: int
+  labelmap_path: /labelmap/c32_class.txt
+
+cameras:
+  test_camera:
+    enabled: false
+    ffmpeg:
+      inputs:
+        - path: rtsp://127.0.0.1:8554/test
+          roles:
+            - detect
+    detect:
+      width: 1280
+      height: 720
+      fps: 5

@@ -1,0 +1,5 @@
+include LICENSE
+include README.md
+include tools/rknn_metadata_probe.c
+include tools/rknn_probe_sha256.h
+include tools/build_rknn_metadata_probe.py

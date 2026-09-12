@@ -1,0 +1,4 @@
+# Synthetic test-only fixture.
+detectors:
+  rknn: {type: rknn}
+model: {path: 'plus://model-id', model_type: yolo-generic}

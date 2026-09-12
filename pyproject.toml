@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rknn-frigate-compat"
+version = "0.2.0"
+description = "Conservative RKNN-to-Frigate structural compatibility checker"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+  { name = "Andy Shen" },
+]
+requires-python = ">=3.10"
+dependencies = ["PyYAML>=6,<7"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7,<9"]
+
+[project.scripts]
+rknn-frigate-compat = "rknn_frigate_compat.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
+pythonpath = ["src"]

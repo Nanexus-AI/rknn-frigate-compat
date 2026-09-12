@@ -1,0 +1,144 @@
+Selection / Environment
+Detector
+  selected: rknn
+Handler
+  selected: yolo-generic
+  evaluated contract: yolo-generic:multipart
+Model
+  configured path: models/configured.rknn
+  inspected path: /models/inspected.rknn
+RKNN Runtime
+  selection mode: default
+  loaded library path: /lib/librknnrt.so
+  loaded library sha256: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  API version: 2.3.2
+  driver version: 0.9.8
+  inherited loader environment: False
+  status: PASS
+
+RKNN Model Metadata
+Inputs: 1
+Input 0
+  shape: [1, 640, 640, 3]
+  layout: NHWC
+  dtype: INT8
+  quantization: AFFINE
+Outputs: 2
+Output 0
+  shape: [1, 255, 80, 80]
+  layout: NCHW
+  dtype: INT8
+  quantization: AFFINE
+Output 1
+  shape: [1, 255, 40, 40]
+  layout: NCHW
+  dtype: INT8
+  quantization: AFFINE
+
+Frigate Structural Contract
+  status: UNKNOWN
+  Input count
+    Frigate expects
+      count: 1
+    RKNN model reports
+      count: 1
+    Result
+      PASS
+      RKNN detection path supplies exactly one input
+  Input rank
+    Frigate expects
+      rank: 4
+    RKNN model reports
+      rank: 4
+    Result
+      PASS
+      Detection input must be rank four
+  Input layout
+    Frigate expects
+      layout: NHWC
+    RKNN model reports
+      layout: NHWC
+    Result
+      PASS
+      Runtime layout must match Frigate input_tensor
+  Output index range
+    Frigate expects
+      supported indices: indices 0..2
+    RKNN model reports
+      output indices: [0, 1]
+      output count: 2
+    Result
+      PASS
+      Multipart output indices must fit the handler maps
+  Output 0 reshape
+    Frigate expects
+      required elements: 1632000
+    RKNN model reports
+      shape: [1, 255, 80, 80]
+      layout: NCHW
+      actual elements: 1632000
+    Result
+      PASS
+      Output must satisfy the handler reshape element equation
+  Output 1 reshape
+    Frigate expects
+      required elements: 408000
+    RKNN model reports
+      shape: [1, 255, 40, 40]
+      layout: NCHW
+      actual elements: 408000
+    Result
+      PASS
+      Output must satisfy the handler reshape element equation
+  Output scale completeness
+    Frigate expects
+      required output count: 3
+    RKNN model reports
+      reported output count: 2
+    Result
+      UNKNOWN
+      Two outputs are executable but third-scale completeness is unproven
+
+Semantic / Unproven Properties
+  status: UNKNOWN
+  Color channel meaning
+    Result
+      UNKNOWN
+      Color channel meaning is not exposed by structural metadata
+  Preprocessing / normalization
+    Result
+      UNKNOWN
+      Preprocessing / normalization is not exposed by structural metadata
+  DFL representation
+    Result
+      UNKNOWN
+      DFL representation is not exposed by structural metadata
+  Objectness semantics
+    Result
+      UNKNOWN
+      Objectness semantics is not exposed by structural metadata
+  Class-score semantics
+    Result
+      UNKNOWN
+      Class-score semantics is not exposed by structural metadata
+  Bounding-box encoding
+    Result
+      UNKNOWN
+      Bounding-box encoding is not exposed by structural metadata
+  Anchor semantics
+    Result
+      UNKNOWN
+      Anchor semantics is not exposed by structural metadata
+  Label semantics
+    Result
+      UNKNOWN
+      Label semantics is not exposed by structural metadata
+  RKNN Lite dequantization behavior
+    Result
+      UNKNOWN
+      RKNN Lite dequantization behavior is not exposed by structural metadata
+
+Overall
+  STRUCTURALLY_COMPATIBLE (exit 0)
+  Compatible within the mechanically checked structural scope of the selected supported contract.
+  This does not prove semantic compatibility, preprocessing correctness, label or numerical correctness, successful inference, or production Frigate integration.

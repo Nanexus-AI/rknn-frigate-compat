@@ -1,0 +1,6 @@
+# Synthetic test-only fixture.
+detectors:
+  first: {type: rknn}
+  cpu: {type: cpu}
+  second: {type: rknn}
+model: {path: models/test.rknn, model_type: yolo-generic}

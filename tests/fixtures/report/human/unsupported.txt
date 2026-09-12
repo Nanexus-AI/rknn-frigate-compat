@@ -1,0 +1,46 @@
+Selection / Environment
+Detector
+  selected: rknn
+Handler
+  selected: yolox
+Model
+  configured path: models/yolox.rknn
+  inspected path: /models/inspected.rknn
+RKNN Runtime
+  selection mode: default
+  loaded library path: /lib/librknnrt.so
+  loaded library sha256: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  API version: 2.3.2
+  driver version: 0.9.8
+  inherited loader environment: False
+  status: PASS
+
+RKNN Model Metadata
+Inputs: 1
+Input 0
+  shape: [1, 640, 640, 3]
+  layout: NHWC
+  dtype: INT8
+  quantization: AFFINE
+Outputs: 2
+Output 0
+  shape: [1, 255, 80, 80]
+  layout: NCHW
+  dtype: INT8
+  quantization: AFFINE
+Output 1
+  shape: [1, 255, 40, 40]
+  layout: NCHW
+  dtype: INT8
+  quantization: AFFINE
+
+Frigate Structural Contract
+  status: FAIL
+  FAIL operation.failure: unsupported handler: yolox
+
+Semantic / Unproven Properties
+  status: NOT_EVALUATED
+
+Overall
+  INDETERMINATE_UNSUPPORTED (exit 4)
+  The selected Frigate contract is outside the supported mechanical scope; no compatibility or incompatibility is concluded.

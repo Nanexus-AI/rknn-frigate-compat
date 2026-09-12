@@ -1,0 +1,436 @@
+Selection / Environment
+Detector
+  selected: rknn
+Handler
+  selected: yolo-generic
+  evaluated contract: yolo-generic:multipart
+Model
+  configured path: /models/c32_yolov8m_v2.0_0715_int8_300.rknn
+  inspected path: /path/to/model.rknn
+RKNN Runtime
+  selection mode: explicit
+  requested directory: /path/to/rknn/runtime
+  expected loader target: /path/to/rknn/runtime/librknnrt.so
+  expected loader sha256: d31fc19c85b85f6091b2bd0f6af9d962d5264a4e410bfb536402ec92bac738e8
+  loaded library path: /path/to/rknn/runtime/librknnrt.so
+  loaded library sha256: d31fc19c85b85f6091b2bd0f6af9d962d5264a4e410bfb536402ec92bac738e8
+  identity verification: PASS
+  API version: 2.3.2 (429f97ae6b@2025-04-09T09:09:27)
+  driver version: 0.9.6
+  inherited loader environment: False
+  status: PASS
+
+RKNN Model Metadata
+Inputs: 1
+Input 0
+  shape: [1, 640, 640, 3]
+  layout: NHWC
+  dtype: INT8
+  quantization: AFFINE
+Outputs: 9
+Output 0
+  shape: [1, 64, 80, 80]
+  layout: NCHW
+  dtype: INT8
+  quantization: AFFINE
+Output 1
+  shape: [1, 32, 80, 80]
+  layout: NCHW
+  dtype: INT8
+  quantization: AFFINE
+Output 2
+  shape: [1, 1, 80, 80]
+  layout: NCHW
+  dtype: INT8
+  quantization: AFFINE
+Output 3
+  shape: [1, 64, 40, 40]
+  layout: NCHW
+  dtype: INT8
+  quantization: AFFINE
+Output 4
+  shape: [1, 32, 40, 40]
+  layout: NCHW
+  dtype: INT8
+  quantization: AFFINE
+Output 5
+  shape: [1, 1, 40, 40]
+  layout: NCHW
+  dtype: INT8
+  quantization: AFFINE
+Output 6
+  shape: [1, 64, 20, 20]
+  layout: NCHW
+  dtype: INT8
+  quantization: AFFINE
+Output 7
+  shape: [1, 32, 20, 20]
+  layout: NCHW
+  dtype: INT8
+  quantization: AFFINE
+Output 8
+  shape: [1, 1, 20, 20]
+  layout: NCHW
+  dtype: INT8
+  quantization: AFFINE
+
+Frigate Structural Contract
+  status: FAIL
+  Input count
+    Frigate expects
+      count: 1
+    RKNN model reports
+      count: 1
+    Result
+      PASS
+      RKNN detection path supplies exactly one input
+  Input rank
+    Frigate expects
+      rank: 4
+    RKNN model reports
+      rank: 4
+    Result
+      PASS
+      Detection input must be rank four
+  Input batch
+    Frigate expects
+      batch: 1
+    RKNN model reports
+      batch: 1
+    Result
+      PASS
+      Batch must be one
+  Input height
+    Frigate expects
+      height: 640
+    RKNN model reports
+      height: 640
+    Result
+      PASS
+      Input height must match Frigate configuration
+  Input width
+    Frigate expects
+      width: 640
+    RKNN model reports
+      width: 640
+    Result
+      PASS
+      Input width must match Frigate configuration
+  Input channels
+    Frigate expects
+      channels: 3
+    RKNN model reports
+      channels: 3
+    Result
+      PASS
+      Detection input must have three channels
+  Input layout
+    Frigate expects
+      layout: NHWC
+    RKNN model reports
+      layout: NHWC
+    Result
+      PASS
+      Runtime layout must match Frigate input_tensor
+  Input dtype
+    Frigate expects
+      dtype: int
+    RKNN model reports
+      dtype: INT8
+    Result
+      UNKNOWN
+      Input dtype conversion semantics are not mechanically proven
+  Input quantization
+    Frigate expects
+      quantization: unavailable
+    RKNN model reports
+      quantization: AFFINE
+    Result
+      UNKNOWN
+      RKNN Lite numerical conversion/dequantization semantics are unproven
+  Output index range
+    Frigate expects
+      supported indices: indices 0..2
+    RKNN model reports
+      output indices: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+      output count: 9
+    Result
+      FAIL
+      Multipart output indices must fit the handler maps
+  Output 0 rank
+    Frigate expects
+      rank: 4
+    RKNN model reports
+      rank: 4
+    Result
+      PASS
+      Multipart output must be rank four
+  Output 0 layout
+    Frigate expects
+      layout: NCHW
+    RKNN model reports
+      layout: NCHW
+    Result
+      PASS
+      Multipart handler requires channel-first output layout
+  Output 0 reshape
+    Frigate expects
+      required elements: 1632000
+    RKNN model reports
+      shape: [1, 64, 80, 80]
+      layout: NCHW
+      actual elements: 409600
+    Result
+      FAIL
+      Output must satisfy the handler reshape element equation
+  Output 1 rank
+    Frigate expects
+      rank: 4
+    RKNN model reports
+      rank: 4
+    Result
+      PASS
+      Multipart output must be rank four
+  Output 1 layout
+    Frigate expects
+      layout: NCHW
+    RKNN model reports
+      layout: NCHW
+    Result
+      PASS
+      Multipart handler requires channel-first output layout
+  Output 1 reshape
+    Frigate expects
+      required elements: 1632000
+    RKNN model reports
+      shape: [1, 32, 80, 80]
+      layout: NCHW
+      actual elements: 204800
+    Result
+      FAIL
+      Output must satisfy the handler reshape element equation
+  Output 2 rank
+    Frigate expects
+      rank: 4
+    RKNN model reports
+      rank: 4
+    Result
+      PASS
+      Multipart output must be rank four
+  Output 2 layout
+    Frigate expects
+      layout: NCHW
+    RKNN model reports
+      layout: NCHW
+    Result
+      PASS
+      Multipart handler requires channel-first output layout
+  Output 2 reshape
+    Frigate expects
+      required elements: 1632000
+    RKNN model reports
+      shape: [1, 1, 80, 80]
+      layout: NCHW
+      actual elements: 6400
+    Result
+      FAIL
+      Output must satisfy the handler reshape element equation
+  Output 3 rank
+    Frigate expects
+      rank: 4
+    RKNN model reports
+      rank: 4
+    Result
+      PASS
+      Multipart output must be rank four
+  Output 3 layout
+    Frigate expects
+      layout: NCHW
+    RKNN model reports
+      layout: NCHW
+    Result
+      PASS
+      Multipart handler requires channel-first output layout
+  Output 3 reshape
+    Frigate expects
+      required elements: 408000
+    RKNN model reports
+      shape: [1, 64, 40, 40]
+      layout: NCHW
+      actual elements: 102400
+    Result
+      FAIL
+      Output must satisfy the handler reshape element equation
+  Output 4 rank
+    Frigate expects
+      rank: 4
+    RKNN model reports
+      rank: 4
+    Result
+      PASS
+      Multipart output must be rank four
+  Output 4 layout
+    Frigate expects
+      layout: NCHW
+    RKNN model reports
+      layout: NCHW
+    Result
+      PASS
+      Multipart handler requires channel-first output layout
+  Output 4 reshape
+    Frigate expects
+      required elements: 408000
+    RKNN model reports
+      shape: [1, 32, 40, 40]
+      layout: NCHW
+      actual elements: 51200
+    Result
+      FAIL
+      Output must satisfy the handler reshape element equation
+  Output 5 rank
+    Frigate expects
+      rank: 4
+    RKNN model reports
+      rank: 4
+    Result
+      PASS
+      Multipart output must be rank four
+  Output 5 layout
+    Frigate expects
+      layout: NCHW
+    RKNN model reports
+      layout: NCHW
+    Result
+      PASS
+      Multipart handler requires channel-first output layout
+  Output 5 reshape
+    Frigate expects
+      required elements: 408000
+    RKNN model reports
+      shape: [1, 1, 40, 40]
+      layout: NCHW
+      actual elements: 1600
+    Result
+      FAIL
+      Output must satisfy the handler reshape element equation
+  Output 6 rank
+    Frigate expects
+      rank: 4
+    RKNN model reports
+      rank: 4
+    Result
+      PASS
+      Multipart output must be rank four
+  Output 6 layout
+    Frigate expects
+      layout: NCHW
+    RKNN model reports
+      layout: NCHW
+    Result
+      PASS
+      Multipart handler requires channel-first output layout
+  Output 6 reshape
+    Frigate expects
+      required elements: 102000
+    RKNN model reports
+      shape: [1, 64, 20, 20]
+      layout: NCHW
+      actual elements: 25600
+    Result
+      FAIL
+      Output must satisfy the handler reshape element equation
+  Output 7 rank
+    Frigate expects
+      rank: 4
+    RKNN model reports
+      rank: 4
+    Result
+      PASS
+      Multipart output must be rank four
+  Output 7 layout
+    Frigate expects
+      layout: NCHW
+    RKNN model reports
+      layout: NCHW
+    Result
+      PASS
+      Multipart handler requires channel-first output layout
+  Output 7 reshape
+    Frigate expects
+      required elements: 102000
+    RKNN model reports
+      shape: [1, 32, 20, 20]
+      layout: NCHW
+      actual elements: 12800
+    Result
+      FAIL
+      Output must satisfy the handler reshape element equation
+  Output 8 rank
+    Frigate expects
+      rank: 4
+    RKNN model reports
+      rank: 4
+    Result
+      PASS
+      Multipart output must be rank four
+  Output 8 layout
+    Frigate expects
+      layout: NCHW
+    RKNN model reports
+      layout: NCHW
+    Result
+      PASS
+      Multipart handler requires channel-first output layout
+  Output 8 reshape
+    Frigate expects
+      required elements: 102000
+    RKNN model reports
+      shape: [1, 1, 20, 20]
+      layout: NCHW
+      actual elements: 400
+    Result
+      FAIL
+      Output must satisfy the handler reshape element equation
+
+Semantic / Unproven Properties
+  status: UNKNOWN
+  Color channel meaning
+    Result
+      UNKNOWN
+      RGB/BGR semantic channel meaning is not exposed by structural metadata
+  Preprocessing / normalization
+    Result
+      UNKNOWN
+      Mean/std and pixel normalization/range is not exposed by structural metadata
+  DFL representation
+    Result
+      UNKNOWN
+      DFL representation is not exposed by structural metadata
+  Objectness semantics
+    Result
+      UNKNOWN
+      Objectness meaning is not exposed by structural metadata
+  Class-score semantics
+    Result
+      UNKNOWN
+      Class-score meaning is not exposed by structural metadata
+  Bounding-box encoding
+    Result
+      UNKNOWN
+      Bounding-box encoding is not exposed by structural metadata
+  Anchor semantics
+    Result
+      UNKNOWN
+      Anchor versus anchor-free meaning is not exposed by structural metadata
+  Label semantics
+    Result
+      UNKNOWN
+      Label meaning is not exposed by structural metadata
+  RKNN Lite dequantization behavior
+    Result
+      UNKNOWN
+      RKNN Lite numerical/dequantization behavior is not exposed by structural metadata
+
+Overall
+  STRUCTURALLY_INCOMPATIBLE (exit 1)
+  A mechanically proven structural mismatch was found against the selected supported contract.

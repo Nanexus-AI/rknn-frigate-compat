@@ -1,0 +1,4 @@
+# Synthetic test-only fixture.
+detectors:
+  rknn: {type: rknn}
+model: {path: models/test.rknn, model_type: yolo-generic, width: 320, height: 320, input_tensor: nhwc, input_pixel_format: rgb, input_dtype: int}

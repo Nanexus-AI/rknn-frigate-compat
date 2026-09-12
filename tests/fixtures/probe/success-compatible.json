@@ -1,0 +1,20 @@
+{
+  "protocol_version": 1,
+  "status": "ok",
+  "runtime": {
+    "api_version": "2.3.2",
+    "driver_version": "0.9.8",
+    "loaded_library_path": "/tmp/librknnrt.so",
+    "loaded_library_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "model": {
+    "model_path": "synthetic.rknn",
+    "input_count": 1,
+    "output_count": 2,
+    "inputs": [{"index":0,"name":"input","n_dims":4,"dims":[1,640,640,3],"format":"NHWC","type":"INT8","quantization_type":"AFFINE","zero_point":-128,"scale":0.00392156886,"element_count":1228800,"byte_size":1228800,"width_stride":640,"byte_size_with_stride":1228800}],
+    "outputs": [
+      {"index":0,"name":"output0","n_dims":4,"dims":[1,255,80,80],"format":"NCHW","type":"INT8","quantization_type":"AFFINE","zero_point":0,"scale":0.1,"element_count":1632000,"byte_size":1632000,"width_stride":80,"byte_size_with_stride":1632000},
+      {"index":1,"name":"output1","n_dims":4,"dims":[1,255,40,40],"format":"NCHW","type":"INT8","quantization_type":"AFFINE","zero_point":0,"scale":0.1,"element_count":408000,"byte_size":408000,"width_stride":40,"byte_size_with_stride":408000}
+    ]
+  }
+}

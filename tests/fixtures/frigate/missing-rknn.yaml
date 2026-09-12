@@ -1,0 +1,4 @@
+# Synthetic test-only fixture.
+detectors:
+  cpu: {type: cpu}
+model: {path: models/test.rknn}

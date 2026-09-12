@@ -1,0 +1,1 @@
+{"protocol_version":1,"status":"error","error":{"stage":"rknn_init","code":"RKNN_INIT_FAILED","message":"synthetic failure","native_code":-1},"runtime":{"loaded_library_path":"/tmp/librknnrt.so","loaded_library_sha256":"0000000000000000000000000000000000000000000000000000000000000000"}}
