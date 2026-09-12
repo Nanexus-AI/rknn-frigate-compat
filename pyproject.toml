@@ -20,6 +20,11 @@ classifiers = [
   "Programming Language :: Python :: 3",
 ]
 
+[project.urls]
+Homepage = "https://github.com/Nanexus-AI/rknn-frigate-compat"
+Repository = "https://github.com/Nanexus-AI/rknn-frigate-compat"
+Issues = "https://github.com/Nanexus-AI/rknn-frigate-compat/issues"
+
 [project.optional-dependencies]
 test = ["pytest>=7,<9"]
 
